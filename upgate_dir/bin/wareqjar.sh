@@ -70,7 +70,7 @@ cut_config_file () {
           TARGET_KEYWORD_MTOBE=`echo ${list_tmp}|awk -F ":" '{print $5}'`
           FFFLG=`echo ${list_tmp}|awk -F ":" '{print $6}'`
           TARGET_SCRIPT_DIR=`echo "${TARGET_APP_DIR_APPNAME}"|awk -F "/" '{print "/"$2"/"$3}'`
-          TARGET_DIR_SCRIPT="${TARGET_SCRIPT_DIR}/up_cl_dir/bin/test.sh"
+          TARGET_DIR_SCRIPT="/opt/p_test/up_cl_dir/bin/cloud-fintech-platform-pay-api.war.sh"
           LOCAL_TARGET_DIR_APPNAME=`find    ${LOCALE_TMP_DIR}${ftp_dir} -type f -name "${local_app_name}"`
 }
 
@@ -92,10 +92,6 @@ if [[ x${LOCAL_APP_NAME} != x ]]; then
                                                             mkdir -p   ${LOCAL_WORKDIR}/${LOCAL_APP_NAME}
                                            fi
 
-                                           if [ ! -d "${LOCALE_TMP_DIR}/test_backup/${LOCAL_APP_NAME}" ] ; then
-                                                            mkdir -p   ${LOCALE_TMP_DIR}/test_backup/${LOCAL_APP_NAME}
-                                           fi
-
                                            if [ x"${LOCAL_TARGET_DIR_APPNAME}" != x ] && [ -f "${LOCAL_TARGET_DIR_APPNAME}" ] ; then
                                                             echo ""
                                                             echo "Copy the target file to the local working directory:"
@@ -113,7 +109,7 @@ if [[ x${LOCAL_APP_NAME} != x ]]; then
                                            read -p "Do you want to update the package \"${TARGET_IP} ${LOCAL_APP_NAME}\"? (Y/N):" YN
                                            case ${YN} in
                                                  Y|y)
-                                                  sh  ${BINDIR}/jenshell.sh  ${TARGET_IP}  ${TARGET_USER} ${TARGET_DIR_SCRIPT}   ${LOCAL_APP_NAME} ${TARGET_APP_DIR_APPNAME} ${TARGET_KEYWORD}  ${FFFLG}  
+                                                  sh  ${BINDIR}/jenshell.sh  ${TARGET_IP}  ${TARGET_USER} ${TARGET_DIR_SCRIPT}     
                                                ;;
                                                  N|n)
                                                   echo ""
